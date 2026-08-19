@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Customer Dashboard - Sri Sadguru Siddarooda Parcel Service"
+    >
+
+    <title>
+        Customer Dashboard | Sri Sadguru Siddarooda Parcel Service
+    </title>
+
+    <!-- Dashboard CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         CUSTOMER PORTAL
+    ====================================================== -->
+
+    <div class="customer-portal">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="dashboard-header">
+
+
+            <!-- COMPANY BRAND -->
+
+            <div class="header-brand">
+
+                <a
+                    href="dashboard.html"
+                    class="brand-link"
+                >
+
+                    <img
+                        src="../images/logo.png"
+                        alt="Sri Sadguru Siddarooda Parcel Service Logo"
+                        class="dashboard-logo"
+                    >
+
+                    <div class="brand-name">
+
+                        <span class="brand-main">
+                            Sri Sadguru
+                        </span>
+
+                        <span class="brand-service">
+                            Siddarooda Parcel Service
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- HEADER ACTIONS -->
+
+            <div class="header-actions">
+
+
+                <!-- NOTIFICATION -->
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    id="notificationButton"
+                    aria-label="Notifications"
+                >
+
+                    <span class="notification-icon">
+                        🔔
+                    </span>
+
+                    <span
+                        class="notification-badge"
+                        id="notificationBadge"
+                    >
+                        2
+                    </span>
+
+                </button>
+
+
+                <!-- PROFILE -->
+
+                <button
+                    type="button"
+                    class="header-profile-button"
+                    id="headerProfileButton"
+                    aria-label="Open profile"
+                >
+
+                    <span class="header-profile-icon">
+                        👤
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="dashboard-content">
+
+
+            <!-- =================================================
+                 WELCOME
+            ================================================== -->
+
+            <section class="welcome-section">
+
+                <div class="welcome-content">
+
+                    <p class="welcome-label">
+                        Welcome back
+                    </p>
+
+                    <h1 id="customerName">
+                        Customer!
+                    </h1>
+
+                    <p class="welcome-description">
+                        Manage your parcels easily from your dashboard.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PRIMARY ACTIONS
+            ================================================== -->
+
+            <section class="primary-actions">
+
+
+                <!-- BOOK PARCEL -->
+
+                <a
+                    href="book-parcel.html"
+                    class="primary-action-card book-card"
+                >
+
+                    <div class="primary-action-icon">
+                        📦
+                    </div>
+
+                    <div class="primary-action-content">
+
+                        <h2>
+                            Book a Parcel
+                        </h2>
+
+                        <p>
+                            Send your parcel quickly and easily.
+                        </p>
+
+                    </div>
+
+                    <span class="primary-action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- TRACK PARCEL -->
+
+                <a
+                    href="track-parcel.html"
+                    class="primary-action-card track-card"
+                >
+
+                    <div class="primary-action-icon">
+                        🔍
+                    </div>
+
+                    <div class="primary-action-content">
+
+                        <h2>
+                            Track a Parcel
+                        </h2>
+
+                        <p>
+                            Check your parcel status and location.
+                        </p>
+
+                    </div>
+
+                    <span class="primary-action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 QUICK TRACKING
+            ================================================== -->
+
+            <section class="tracking-section">
+
+
+                <div class="section-title">
+
+                    <div>
+
+                        <h2>
+                            Track Your Parcel
+                        </h2>
+
+                        <p>
+                            Enter your booking or tracking ID.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    class="tracking-form"
+                    id="trackingForm"
+                >
+
+                    <div class="tracking-input-container">
+
+                        <span class="tracking-search-icon">
+                            🔍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="trackingId"
+                            name="trackingId"
+                            placeholder="Enter tracking ID"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="tracking-button"
+                    >
+                        Track
+                    </button>
+
+                </form>
+
+
+                <p
+                    class="tracking-message"
+                    id="trackingMessage"
+                ></p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DASHBOARD SUMMARY
+            ================================================== -->
+
+            <section class="summary-grid">
+
+
+                <!-- ACTIVE DELIVERIES -->
+
+                <div class="summary-card">
+
+                    <div class="summary-card-icon">
+                        🚚
+                    </div>
+
+                    <div class="summary-card-content">
+
+                        <span>
+                            Active Deliveries
+                        </span>
+
+                        <strong id="activeDeliveries">
+                            2
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOTAL ORDERS -->
+
+                <div class="summary-card">
+
+                    <div class="summary-card-icon">
+                        📦
+                    </div>
+
+                    <div class="summary-card-content">
+
+                        <span>
+                            Total Orders
+                        </span>
+
+                        <strong id="totalOrders">
+                            12
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PAYMENT DUE -->
+
+                <div class="summary-card payment-card">
+
+                    <div class="summary-card-icon">
+                        ₹
+                    </div>
+
+                    <div class="summary-card-content">
+
+                        <span>
+                            Payment Due
+                        </span>
+
+                        <strong id="paymentDue">
+                            ₹450
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETED -->
+
+                <div class="summary-card">
+
+                    <div class="summary-card-icon">
+                        ✓
+                    </div>
+
+                    <div class="summary-card-content">
+
+                        <span>
+                            Delivered
+                        </span>
+
+                        <strong id="deliveredOrders">
+                            8
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PAYMENT DUE
+            ================================================== -->
+
+            <section class="payment-due-section">
+
+
+                <div class="payment-due-icon">
+                    ₹
+                </div>
+
+
+                <div class="payment-due-information">
+
+                    <span class="payment-due-label">
+                        Payment Due
+                    </span>
+
+                    <h2 id="paymentAmount">
+                        ₹450
+                    </h2>
+
+                    <p>
+                        Your parcel service charge is ready for payment.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="payment.html"
+                    class="pay-now-button"
+                >
+                    Pay Now
+                </a>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RECENT BOOKINGS
+            ================================================== -->
+
+            <section class="recent-bookings-section">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Recent Bookings
+                        </h2>
+
+                        <p>
+                            Your latest parcel activity.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="track-parcel.html"
+                        class="view-all-button"
+                    >
+                        View All
+                    </a>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     BOOKING 1
+                ============================================== -->
+
+                <article class="booking-item">
+
+
+                    <div class="booking-left">
+
+                        <div class="booking-icon">
+                            📦
+                        </div>
+
+
+                        <div class="booking-information">
+
+                            <h3>
+                                Parcel Booking
+                            </h3>
+
+                            <p>
+                                Tracking ID:
+                                <strong>
+                                    SBG-100928
+                                </strong>
+                            </p>
+
+                            <span>
+                                18 Aug 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="booking-right">
+
+                        <span class="booking-status status-transit">
+                            In Transit
+                        </span>
+
+
+                        <a
+                            href="parcel-details.html?id=SBG-100928"
+                            class="booking-details"
+                        >
+                            View Details
+                        </a>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- =============================================
+                     BOOKING 2
+                ============================================== -->
+
+                <article class="booking-item">
+
+
+                    <div class="booking-left">
+
+                        <div class="booking-icon">
+                            📦
+                        </div>
+
+
+                        <div class="booking-information">
+
+                            <h3>
+                                Document Parcel
+                            </h3>
+
+                            <p>
+                                Tracking ID:
+                                <strong>
+                                    SBG-100875
+                                </strong>
+                            </p>
+
+                            <span>
+                                15 Aug 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="booking-right">
+
+                        <span class="booking-status status-delivered">
+                            Delivered
+                        </span>
+
+
+                        <a
+                            href="parcel-details.html?id=SBG-100875"
+                            class="booking-details"
+                        >
+                            View Details
+                        </a>
+
+                    </div>
+
+
+                </article>
+
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 QUICK ACTIONS
+            ================================================== -->
+
+            <section class="quick-actions-section">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                        <p>
+                            Quickly access your customer services.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions-grid">
+
+
+                    <!-- BOOK -->
+
+                    <a
+                        href="book-parcel.html"
+                        class="quick-action-card"
+                    >
+
+                        <span class="quick-action-icon">
+                            📦
+                        </span>
+
+                        <strong>
+                            Book Parcel
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- TRACK -->
+
+                    <a
+                        href="track-parcel.html"
+                        class="quick-action-card"
+                    >
+
+                        <span class="quick-action-icon">
+                            🔍
+                        </span>
+
+                        <strong>
+                            Track Parcel
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- PAYMENT -->
+
+                    <a
+                        href="payment.html"
+                        class="quick-action-card"
+                    >
+
+                        <span class="quick-action-icon">
+                            💳
+                        </span>
+
+                        <strong>
+                            Payment
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- HISTORY -->
+
+                    <a
+                        href="track-parcel.html"
+                        class="quick-action-card"
+                    >
+
+                        <span class="quick-action-icon">
+                            📋
+                        </span>
+
+                        <strong>
+                            Order History
+                        </strong>
+
+                    </a>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- =================================================
+             BOTTOM NAVIGATION
+        ================================================== -->
+
+        <nav
+            class="bottom-navigation"
+            aria-label="Customer portal navigation"
+        >
+
+
+            <!-- HOME -->
+
+            <a
+                href="dashboard.html"
+                class="bottom-nav-item active"
+            >
+
+                <span class="bottom-nav-icon">
+                    🏠
+                </span>
+
+                <span class="bottom-nav-label">
+                    Home
+                </span>
+
+            </a>
+
+
+
+            <!-- BOOK -->
+
+            <a
+                href="book-parcel.html"
+                class="bottom-nav-item"
+            >
+
+                <span class="bottom-nav-icon">
+                    📦
+                </span>
+
+                <span class="bottom-nav-label">
+                    Book
+                </span>
+
+            </a>
+
+
+
+            <!-- TRACK -->
+
+            <a
+                href="track-parcel.html"
+                class="bottom-nav-item"
+            >
+
+                <span class="bottom-nav-icon">
+                    🔍
+                </span>
+
+                <span class="bottom-nav-label">
+                    Track
+                </span>
+
+            </a>
+
+
+
+            <!-- PAYMENT -->
+
+            <a
+                href="payment.html"
+                class="bottom-nav-item"
+            >
+
+                <span class="bottom-nav-icon">
+                    💳
+                </span>
+
+                <span class="bottom-nav-label">
+                    Payment
+                </span>
+
+            </a>
+
+
+
+            <!-- PROFILE -->
+
+            <a
+                href="profile.html"
+                class="bottom-nav-item"
+            >
+
+                <span class="bottom-nav-icon">
+                    👤
+                </span>
+
+                <span class="bottom-nav-label">
+                    Profile
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DASHBOARD JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="../js/dashboard.js"
+    ></script>
+
+
+</body>
+
+</html>

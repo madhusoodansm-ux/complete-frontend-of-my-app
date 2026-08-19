@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payments | Sri Sadguru Siddarooda Parcel Service</title>
+
+    <link rel="stylesheet" href="../css/payment.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="payment-header">
+
+        <div class="header-left">
+
+            <button
+                type="button"
+                class="back-btn"
+                onclick="goBack()"
+                aria-label="Go back">
+                ←
+            </button>
+
+            <div class="header-title">
+
+                <h1>Payments</h1>
+
+                <p>
+                    Payment history and parcel payment details
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="payment-container">
+
+
+        <!-- =================================================
+             PAYMENT SUMMARY
+        ================================================== -->
+
+        <section class="payment-summary">
+
+            <div class="summary-card">
+
+                <span>
+                    Total Payments
+                </span>
+
+                <strong id="totalPayments">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>
+                    Paid
+                </span>
+
+                <strong id="paidPayments">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>
+                    Unpaid
+                </span>
+
+                <strong id="unpaidPayments">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>
+                    Amount Due
+                </span>
+
+                <strong id="amountDue">
+                    ₹0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SEARCH + HISTORY
+        ================================================== -->
+
+        <section class="payment-history-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Payment & Order History
+                    </h2>
+
+                    <p>
+                        Your newest orders and payment records appear first.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Tracking ID Search -->
+
+            <div class="payment-search">
+
+                <input
+                    type="text"
+                    id="paymentSearch"
+                    placeholder="Search Tracking ID or Booking ID..."
+                    autocomplete="off">
+
+            </div>
+
+
+            <!-- Filters -->
+
+            <div class="payment-filters">
+
+                <button
+                    type="button"
+                    class="filter-btn active"
+                    data-filter="all">
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-btn"
+                    data-filter="paid">
+                    Paid
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-btn"
+                    data-filter="unpaid">
+                    Unpaid
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-btn"
+                    data-filter="pending">
+                    Pending
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-btn"
+                    data-filter="cod">
+                    COD
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 COMPLETE HISTORY
+
+                 JavaScript will display records here.
+                 Newest date must appear first.
+            ================================================== -->
+
+            <div
+                id="paymentList"
+                class="payment-list">
+
+            </div>
+
+
+            <!-- No Results -->
+
+            <div
+                id="noPayments"
+                class="no-payments"
+                style="display:none;">
+
+                <div class="empty-icon">
+                    ₹
+                </div>
+
+                <h3>
+                    No payment records found
+                </h3>
+
+                <p>
+                    No order or payment records match your search.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         PAYMENT MODAL
+    ====================================================== -->
+
+    <div
+        id="paymentModal"
+        class="payment-modal"
+        style="display:none;">
+
+        <div
+            class="payment-modal-overlay"
+            onclick="closePaymentModal()">
+        </div>
+
+
+        <div class="payment-modal-content">
+
+
+            <!-- Modal Header -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Make Payment
+                    </h2>
+
+                    <p id="modalTrackingId">
+                        Tracking ID
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    onclick="closePaymentModal()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- Amount -->
+
+            <div class="payment-amount-box">
+
+                <span>
+                    Amount Payable
+                </span>
+
+                <strong id="modalAmount">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <!-- =================================================
+                 PAYMENT METHODS
+            ================================================== -->
+
+            <div class="payment-method-section">
+
+                <h3>
+                    Select Payment Method
+                </h3>
+
+
+                <!-- PhonePe -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="phonepe">
+
+                    <span class="method-icon">
+                        P
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            PhonePe
+                        </strong>
+
+                        <small>
+                            Pay using PhonePe
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- Google Pay -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="googlepay">
+
+                    <span class="method-icon">
+                        G
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            Google Pay
+                        </strong>
+
+                        <small>
+                            Pay using Google Pay
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- Paytm -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="paytm">
+
+                    <span class="method-icon">
+                        P
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            Paytm
+                        </strong>
+
+                        <small>
+                            Pay using Paytm
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- UPI -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="upi">
+
+                    <span class="method-icon">
+                        U
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            UPI
+                        </strong>
+
+                        <small>
+                            Pay using any supported UPI app
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- Debit Card -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="debit-card">
+
+                    <span class="method-icon">
+                        💳
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            Debit Card
+                        </strong>
+
+                        <small>
+                            Visa, Mastercard or RuPay
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- Credit Card -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="credit-card">
+
+                    <span class="method-icon">
+                        💳
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            Credit Card
+                        </strong>
+
+                        <small>
+                            Visa, Mastercard or RuPay
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- Bank Transfer -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="bank-transfer">
+
+                    <span class="method-icon">
+                        🏦
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            Direct Bank Transfer
+                        </strong>
+
+                        <small>
+                            Transfer directly to our bank account
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <!-- Cash on Delivery -->
+
+                <label class="payment-method">
+
+                    <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="cod">
+
+                    <span class="method-icon">
+                        ₹
+                    </span>
+
+                    <span class="method-info">
+
+                        <strong>
+                            Cash on Delivery
+                        </strong>
+
+                        <small>
+                            Pay when the parcel is collected
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- =================================================
+                 UPI DETAILS
+            ================================================== -->
+
+            <div
+                id="upiPaymentBox"
+                class="additional-payment-box"
+                style="display:none;">
+
+                <h3>
+                    UPI Payment
+                </h3>
+
+                <p>
+                    Enter your UPI ID to continue.
+                </p>
+
+                <input
+                    type="text"
+                    id="upiId"
+                    placeholder="example@upi">
+
+                <small id="upiError"></small>
+
+            </div>
+
+
+            <!-- =================================================
+                 CARD DETAILS
+            ================================================== -->
+
+            <div
+                id="cardPaymentBox"
+                class="additional-payment-box"
+                style="display:none;">
+
+                <h3>
+                    Card Details
+                </h3>
+
+
+                <label for="cardHolderName">
+                    Card Holder Name
+                </label>
+
+                <input
+                    type="text"
+                    id="cardHolderName"
+                    placeholder="Enter card holder name">
+
+
+                <label for="cardNumber">
+                    Card Number
+                </label>
+
+                <input
+                    type="text"
+                    id="cardNumber"
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                    inputmode="numeric">
+
+
+                <div class="card-row">
+
+                    <div>
+
+                        <label for="cardExpiry">
+                            Expiry Date
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cardExpiry"
+                            placeholder="MM/YY"
+                            maxlength="5">
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="cardCvv">
+                            CVV
+                        </label>
+
+                        <input
+                            type="password"
+                            id="cardCvv"
+                            placeholder="CVV"
+                            maxlength="4"
+                            inputmode="numeric">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BANK TRANSFER
+            ================================================== -->
+
+            <div
+                id="bankPaymentBox"
+                class="additional-payment-box"
+                style="display:none;">
+
+                <h3>
+                    Direct Bank Transfer
+                </h3>
+
+                <p>
+                    Transfer the exact payable amount to our
+                    registered business bank account.
+                </p>
+
+
+                <div class="bank-details">
+
+                    <div>
+
+                        <span>
+                            Account Name
+                        </span>
+
+                        <strong>
+                            Sri Sadguru Siddarooda Parcel Service
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Account Number
+                        </span>
+
+                        <strong>
+                            XXXX XXXX XXXX
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            IFSC
+                        </span>
+
+                        <strong>
+                            XXXXXXXX
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <label for="bankReference">
+                    Transaction / Reference Number
+                </label>
+
+                <input
+                    type="text"
+                    id="bankReference"
+                    placeholder="Enter transaction reference number">
+
+            </div>
+
+
+            <!-- =================================================
+                 COD
+            ================================================== -->
+
+            <div
+                id="codPaymentBox"
+                class="additional-payment-box"
+                style="display:none;">
+
+                <div class="cod-message">
+
+                    <strong>
+                        Cash on Delivery selected
+                    </strong>
+
+                    <p>
+                        You will pay the applicable amount when
+                        the parcel is collected.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Secure Information -->
+
+            <div class="secure-payment-info">
+
+                <span>
+                    🔒
+                </span>
+
+                <p>
+                    Your payment information is securely processed.
+                </p>
+
+            </div>
+
+
+            <!-- Confirm Payment -->
+
+            <button
+                type="button"
+                id="confirmPaymentBtn"
+                class="confirm-payment-btn"
+                onclick="processPayment()">
+
+                Pay Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         A4 RECEIPT PREVIEW
+    ====================================================== -->
+
+    <div
+        id="receiptPreview"
+        class="receipt-preview-overlay"
+        style="display:none;">
+
+        <!-- Receipt toolbar -->
+
+        <div class="receipt-preview-toolbar">
+
+            <button
+                type="button"
+                onclick="closeReceiptPreview()">
+                ← Back
+            </button>
+
+
+            <div class="receipt-toolbar-title">
+
+                <strong>
+                    Payment Receipt
+                </strong>
+
+                <span>
+                    A4 Preview
+                </span>
+
+            </div>
+
+
+            <div class="receipt-toolbar-actions">
+
+                <button
+                    type="button"
+                    onclick="printReceipt()">
+                    Print
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="downloadReceipt()">
+                    Download PDF
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             A4 PAPER
+        ================================================== -->
+
+        <div
+            id="receiptA4"
+            class="receipt-a4">
+
+
+            <!-- =================================================
+                 COMPANY HEADER
+            ================================================== -->
+
+            <div class="receipt-company-header">
+
+
+                <div class="company-logo-area">
+
+                    <img
+                        src="../images/logo.png"
+                        alt="Sri Sadguru Siddarooda Parcel Service">
+
+                </div>
+
+
+                <div class="company-details">
+
+                    <h1>
+                        Sri Sadguru Siddarooda
+                        Parcel Service
+                    </h1>
+
+                    <p>
+                        Reliable Parcel & Delivery Service
+                    </p>
+
+                    <p id="companyAddress">
+                        Complete Company Address,
+                        City, District, State,
+                        PIN Code
+                    </p>
+
+                    <p id="companyPhone">
+                        Phone: +91 XXXXX XXXXX
+                    </p>
+
+                    <p id="companyEmail">
+                        Email: support@example.com
+                    </p>
+
+                </div>
+
+
+                <div class="receipt-heading">
+
+                    <h2>
+                        PAYMENT RECEIPT
+                    </h2>
+
+                    <span>
+                        Original
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="receipt-divider"></div>
+
+
+            <!-- =================================================
+                 RECEIPT BASIC INFORMATION
+            ================================================== -->
+
+            <section class="receipt-section">
+
+                <h3>
+                    Receipt Information
+                </h3>
+
+
+                <div class="receipt-info-grid">
+
+
+                    <div class="receipt-info-box">
+
+                        <span>
+                            Receipt Number
+                        </span>
+
+                        <strong id="receiptNumber">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="receipt-info-box">
+
+                        <span>
+                            Payment Date
+                        </span>
+
+                        <strong id="receiptDate">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="receipt-info-box">
+
+                        <span>
+                            Booking ID
+                        </span>
+
+                        <strong id="receiptBookingId">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="receipt-info-box">
+
+                        <span>
+                            Tracking ID
+                        </span>
+
+                        <strong id="receiptTrackingId">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CUSTOMER INFORMATION
+            ================================================== -->
+
+            <section class="receipt-section">
+
+                <h3>
+                    Customer Information
+                </h3>
+
+
+                <div class="receipt-two-column">
+
+
+                    <div>
+
+                        <span>
+                            Customer Name
+                        </span>
+
+                        <strong id="receiptCustomerName">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Customer Phone Number
+                        </span>
+
+                        <strong id="receiptCustomerPhone">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Customer Email
+                        </span>
+
+                        <strong id="receiptCustomerEmail">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RECEIVER INFORMATION
+            ================================================== -->
+
+            <section class="receipt-section">
+
+                <h3>
+                    Receiver / Delivery Information
+                </h3>
+
+
+                <div class="receipt-two-column">
+
+
+                    <div>
+
+                        <span>
+                            Receiver Name
+                        </span>
+
+                        <strong id="receiptReceiverName">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Receiver Phone Number
+                        </span>
+
+                        <strong id="receiptReceiverPhone">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Receiver Email
+                        </span>
+
+                        <strong id="receiptReceiverEmail">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DELIVERY ROUTE
+            ================================================== -->
+
+            <section class="receipt-section">
+
+                <h3>
+                    Delivery Route
+                </h3>
+
+
+                <div class="delivery-route">
+
+
+                    <div class="route-location">
+
+                        <span>
+                            PICKUP FROM
+                        </span>
+
+                        <strong id="receiptPickup">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="route-arrow">
+                        →
+                    </div>
+
+
+                    <div class="route-location">
+
+                        <span>
+                            DELIVER TO
+                        </span>
+
+                        <strong id="receiptDelivery">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PARCEL INFORMATION
+            ================================================== -->
+
+            <section class="receipt-section">
+
+                <h3>
+                    Parcel Information
+                </h3>
+
+
+                <div class="receipt-two-column">
+
+
+                    <div>
+
+                        <span>
+                            Parcel Name
+                        </span>
+
+                        <strong id="receiptParcelName">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Parcel Type
+                        </span>
+
+                        <strong id="receiptParcelType">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Parcel Weight
+                        </span>
+
+                        <strong id="receiptParcelWeight">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PAYMENT DETAILS
+            ================================================== -->
+
+            <section class="receipt-section">
+
+                <h3>
+                    Payment Details
+                </h3>
+
+
+                <table class="receipt-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Tracking ID
+                            </th>
+
+                            <th>
+                                Payment Method
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td id="receiptDescription">
+                                Parcel Delivery Service
+                            </td>
+
+                            <td id="receiptTableTrackingId">
+                                —
+                            </td>
+
+                            <td id="receiptMethod">
+                                —
+                            </td>
+
+                            <td id="receiptTableAmount">
+                                ₹0
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+
+            <!-- =================================================
+                 GST + TOTAL
+            ================================================== -->
+
+            <section class="receipt-amount-section">
+
+
+                <div class="receipt-amount-row">
+
+                    <span>
+                        Service Charge
+                    </span>
+
+                    <strong id="receiptServiceCharge">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="receipt-amount-row">
+
+                    <span>
+                        GST
+                    </span>
+
+                    <strong id="receiptGST">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="receipt-amount-row">
+
+                    <span>
+                        GST Payment Status
+                    </span>
+
+                    <strong id="receiptGSTStatus">
+                        Included
+                    </strong>
+
+                </div>
+
+
+                <div class="receipt-amount-row total">
+
+                    <span>
+                        Total Amount
+                    </span>
+
+                    <strong id="receiptAmount">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PAYMENT STATUS
+            ================================================== -->
+
+            <div class="receipt-payment-status">
+
+                <div>
+
+                    <span>
+                        Payment Status
+                    </span>
+
+                    <strong id="receiptPaymentStatus">
+                        PAID
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Payment Method
+                    </span>
+
+                    <strong id="receiptPaymentMethod">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Transaction ID
+                    </span>
+
+                    <strong id="receiptTransactionId">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SIGNATURE + SEAL AREA
+            ================================================== -->
+
+            <section class="receipt-authorization">
+
+
+                <div class="signature-area">
+
+                    <div class="signature-space">
+
+                        <!-- Reserved for authorized signature -->
+
+                    </div>
+
+                    <div class="signature-line"></div>
+
+                    <strong>
+                        Authorized Signature
+                    </strong>
+
+                </div>
+
+
+                <div class="seal-area">
+
+                    <div class="seal-space">
+
+                        <!-- Reserved for company seal/stamp -->
+
+                        <span>
+                            COMPANY<br>
+                            SEAL
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        Company Seal / Stamp
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RECEIPT FOOTER
+            ================================================== -->
+
+            <footer class="receipt-footer">
+
+                <p>
+                    This is a computer-generated payment receipt.
+                    No physical signature is required unless specified
+                    by the company.
+                </p>
+
+                <p>
+                    Thank you for choosing
+                    Sri Sadguru Siddarooda Parcel Service.
+                </p>
+
+
+                <div class="receipt-footer-line"></div>
+
+
+                <small>
+                    Please retain this receipt for your records.
+                </small>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav class="bottom-navigation">
+
+
+        <a
+            href="dashboard.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+        <a
+            href="parcel.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                📦
+            </span>
+
+            <span>
+                Book
+            </span>
+
+        </a>
+
+
+        <a
+            href="track-parcel.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ⌕
+            </span>
+
+            <span>
+                Track
+            </span>
+
+        </a>
+
+
+        <a
+            href="payment.html"
+            class="nav-item active">
+
+            <span class="nav-icon">
+                ₹
+            </span>
+
+            <span>
+                Payment
+            </span>
+
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="nav-item">
+
+            <span class="nav-icon">
+                ◉
+            </span>
+
+            <span>
+                Profile
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/payment.js"></script>
+
+</body>
+</html>

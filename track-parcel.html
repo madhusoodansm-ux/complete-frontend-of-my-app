@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Track Parcel | Sri Sadguru Parcel Service</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/track-parcel.css"
+    >
+</head>
+
+<body>
+
+    <!-- ==============================
+         HEADER
+    =============================== -->
+
+    <header class="top-header">
+
+        <div class="header-left">
+
+            <a
+                href="dashboard.html"
+                class="back-button"
+                aria-label="Back to Dashboard"
+            >
+                ←
+            </a>
+
+            <div>
+                <h1>Track Parcel</h1>
+                <p>Track and view your parcel history</p>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         MAIN
+    =============================== -->
+
+    <main class="track-container">
+
+
+        <!-- ==============================
+             TRACK PARCEL SEARCH
+        =============================== -->
+
+        <section class="tracking-search-card">
+
+            <h2>Track Your Parcel</h2>
+
+            <p class="section-description">
+                Enter your booking or tracking ID to
+                check the current status of your parcel.
+            </p>
+
+            <form id="trackingForm">
+
+                <div class="tracking-input-group">
+
+                    <label for="trackingId">
+                        Tracking / Booking ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="trackingId"
+                        name="trackingId"
+                        placeholder="Example: SBG-100245"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="track-button"
+                >
+                    Track Parcel
+                </button>
+
+            </form>
+
+            <p
+                id="trackingError"
+                class="tracking-error"
+                aria-live="polite"
+            ></p>
+
+        </section>
+
+
+        <!-- ==============================
+             ORDER HISTORY
+             Only available inside Track page
+        =============================== -->
+
+        <section class="order-history-section">
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <h2>Order History</h2>
+
+                    <p>
+                        Your recent and previous parcel bookings
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==============================
+                 FILTERS
+            =============================== -->
+
+            <div
+                class="history-filters"
+                role="tablist"
+                aria-label="Order history filters"
+            >
+
+                <button
+                    type="button"
+                    class="history-filter active"
+                    data-filter="recent"
+                >
+                    Recent
+                </button>
+
+                <button
+                    type="button"
+                    class="history-filter"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="history-filter"
+                    data-filter="delivered"
+                >
+                    Delivered
+                </button>
+
+                <button
+                    type="button"
+                    class="history-filter"
+                    data-filter="out-for-delivery"
+                >
+                    Out for Delivery
+                </button>
+
+                <button
+                    type="button"
+                    class="history-filter"
+                    data-filter="in-transit"
+                >
+                    In Transit
+                </button>
+
+                <button
+                    type="button"
+                    class="history-filter"
+                    data-filter="not-delivered"
+                >
+                    Not Delivered
+                </button>
+
+                <button
+                    type="button"
+                    class="history-filter"
+                    data-filter="cancelled"
+                >
+                    Cancelled
+                </button>
+
+            </div>
+
+
+            <!-- ==============================
+                 HISTORY LIST
+            =============================== -->
+
+            <div
+                id="orderHistoryList"
+                class="order-history-list"
+            >
+
+
+                <!-- ==============================
+                     ORDER 1
+                =============================== -->
+
+                <article
+                    class="order-card"
+                    data-status="in-transit"
+                    data-date="2026-08-19"
+                >
+
+                    <div class="order-card-top">
+
+                        <div>
+
+                            <span class="order-label">
+                                Booking ID
+                            </span>
+
+                            <h3>
+                                SBG-100245
+                            </h3>
+
+                        </div>
+
+                        <span class="order-status status-in-transit">
+                            In Transit
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-details">
+
+                        <div class="order-detail">
+
+                            <span>
+                                Parcel
+                            </span>
+
+                            <strong>
+                                Birthday Gift
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Gifts
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Route
+                            </span>
+
+                            <strong>
+                                Bengaluru → Mysuru
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Booking Date
+                            </span>
+
+                            <strong>
+                                19 Aug 2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-card-bottom">
+
+                        <span class="order-current-status">
+                            Parcel is currently in transit
+                        </span>
+
+                        <button
+                            type="button"
+                            class="view-order-button"
+                            data-tracking-id="SBG-100245"
+                        >
+                            Track
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==============================
+                     ORDER 2
+                =============================== -->
+
+                <article
+                    class="order-card"
+                    data-status="delivered"
+                    data-date="2026-08-18"
+                >
+
+                    <div class="order-card-top">
+
+                        <div>
+
+                            <span class="order-label">
+                                Booking ID
+                            </span>
+
+                            <h3>
+                                SBG-100244
+                            </h3>
+
+                        </div>
+
+                        <span class="order-status status-delivered">
+                            Delivered
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-details">
+
+                        <div class="order-detail">
+
+                            <span>
+                                Parcel
+                            </span>
+
+                            <strong>
+                                Important Documents
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Document
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Route
+                            </span>
+
+                            <strong>
+                                Hubballi → Bengaluru
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Booking Date
+                            </span>
+
+                            <strong>
+                                18 Aug 2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-card-bottom">
+
+                        <span class="order-current-status">
+                            Successfully delivered
+                        </span>
+
+                        <button
+                            type="button"
+                            class="view-order-button"
+                            data-tracking-id="SBG-100244"
+                        >
+                            Track
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==============================
+                     ORDER 3
+                =============================== -->
+
+                <article
+                    class="order-card"
+                    data-status="out-for-delivery"
+                    data-date="2026-08-17"
+                >
+
+                    <div class="order-card-top">
+
+                        <div>
+
+                            <span class="order-label">
+                                Booking ID
+                            </span>
+
+                            <h3>
+                                SBG-100243
+                            </h3>
+
+                        </div>
+
+                        <span class="order-status status-out-for-delivery">
+                            Out for Delivery
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-details">
+
+                        <div class="order-detail">
+
+                            <span>
+                                Parcel
+                            </span>
+
+                            <strong>
+                                Medicine
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Medicine
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Route
+                            </span>
+
+                            <strong>
+                                Dharwad → Bengaluru
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Booking Date
+                            </span>
+
+                            <strong>
+                                17 Aug 2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-card-bottom">
+
+                        <span class="order-current-status">
+                            Delivery is scheduled for today
+                        </span>
+
+                        <button
+                            type="button"
+                            class="view-order-button"
+                            data-tracking-id="SBG-100243"
+                        >
+                            Track
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==============================
+                     ORDER 4
+                =============================== -->
+
+                <article
+                    class="order-card"
+                    data-status="cancelled"
+                    data-date="2026-08-15"
+                >
+
+                    <div class="order-card-top">
+
+                        <div>
+
+                            <span class="order-label">
+                                Booking ID
+                            </span>
+
+                            <h3>
+                                SBG-100242
+                            </h3>
+
+                        </div>
+
+                        <span class="order-status status-cancelled">
+                            Cancelled
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-details">
+
+                        <div class="order-detail">
+
+                            <span>
+                                Parcel
+                            </span>
+
+                            <strong>
+                                Electronics
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Electronics
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Route
+                            </span>
+
+                            <strong>
+                                Bengaluru → Ballari
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Booking Date
+                            </span>
+
+                            <strong>
+                                15 Aug 2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-card-bottom">
+
+                        <span class="order-current-status">
+                            Booking was cancelled
+                        </span>
+
+                        <button
+                            type="button"
+                            class="view-order-button"
+                            data-tracking-id="SBG-100242"
+                        >
+                            View
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==============================
+                     ORDER 5
+                =============================== -->
+
+                <article
+                    class="order-card"
+                    data-status="not-delivered"
+                    data-date="2026-08-12"
+                >
+
+                    <div class="order-card-top">
+
+                        <div>
+
+                            <span class="order-label">
+                                Booking ID
+                            </span>
+
+                            <h3>
+                                SBG-100241
+                            </h3>
+
+                        </div>
+
+                        <span class="order-status status-not-delivered">
+                            Not Delivered
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-details">
+
+                        <div class="order-detail">
+
+                            <span>
+                                Parcel
+                            </span>
+
+                            <strong>
+                                Books
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Books
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Route
+                            </span>
+
+                            <strong>
+                                Mysuru → Bengaluru
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                Booking Date
+                            </span>
+
+                            <strong>
+                                12 Aug 2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-card-bottom">
+
+                        <span class="order-current-status">
+                            Delivery is pending
+                        </span>
+
+                        <button
+                            type="button"
+                            class="view-order-button"
+                            data-tracking-id="SBG-100241"
+                        >
+                            Track
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==============================
+                     NO HISTORY MESSAGE
+                =============================== -->
+
+                <div
+                    id="noHistoryMessage"
+                    class="no-history-message"
+                    style="display: none;"
+                >
+
+                    <div class="no-history-icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        No Orders Found
+                    </h3>
+
+                    <p>
+                        There are no parcels in this category.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             TRACKING RESULT
+             Initially hidden
+        =============================== -->
+
+        <section
+            id="trackingResult"
+            class="tracking-result"
+            style="display: none;"
+        >
+
+            <!-- Current Status -->
+
+            <div class="status-card">
+
+                <div class="status-header">
+
+                    <div>
+
+                        <span class="status-label">
+                            Current Status
+                        </span>
+
+                        <h2 id="currentStatus">
+                            In Transit
+                        </h2>
+
+                    </div>
+
+                    <span
+                        id="statusBadge"
+                        class="status-badge"
+                    >
+                        In Transit
+                    </span>
+
+                </div>
+
+                <p id="statusMessage">
+                    Your parcel is currently on the way
+                    to the destination.
+                </p>
+
+            </div>
+
+
+            <!-- Parcel Information -->
+
+            <div class="parcel-info-card">
+
+                <h2>
+                    Parcel Information
+                </h2>
+
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Booking ID
+                        </span>
+
+                        <strong id="displayBookingId">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Parcel Name
+                        </span>
+
+                        <strong id="displayParcelName">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Parcel Type
+                        </span>
+
+                        <strong id="displayParcelType">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Weight
+                        </span>
+
+                        <strong id="displayWeight">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Pickup Location
+                        </span>
+
+                        <strong id="displayPickupLocation">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Delivery Location
+                        </span>
+
+                        <strong id="displayDeliveryLocation">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Pickup Date
+                        </span>
+
+                        <strong id="displayPickupDate">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Expected Delivery
+                        </span>
+
+                        <strong id="displayExpectedDelivery">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Tracking Timeline -->
+
+            <div class="timeline-card">
+
+                <h2>
+                    Parcel Tracking
+                </h2>
+
+
+                <div class="tracking-timeline">
+
+
+                    <div
+                        class="timeline-item completed"
+                        data-status="booking"
+                    >
+
+                        <div class="timeline-icon">
+                            ✓
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Booking Confirmed
+                            </h3>
+
+                            <p>
+                                Your parcel booking has
+                                been confirmed.
+                            </p>
+
+                            <span class="timeline-date">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-item completed"
+                        data-status="scheduled"
+                    >
+
+                        <div class="timeline-icon">
+                            ✓
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Pickup Scheduled
+                            </h3>
+
+                            <p>
+                                Pickup has been scheduled.
+                            </p>
+
+                            <span class="timeline-date">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-item completed"
+                        data-status="picked-up"
+                    >
+
+                        <div class="timeline-icon">
+                            ✓
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Parcel Picked Up
+                            </h3>
+
+                            <p>
+                                Your parcel has been collected.
+                            </p>
+
+                            <span class="timeline-date">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-item active"
+                        data-status="transit"
+                    >
+
+                        <div class="timeline-icon">
+                            ●
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                In Transit
+                            </h3>
+
+                            <p>
+                                Your parcel is moving
+                                towards the destination.
+                            </p>
+
+                            <span class="timeline-date">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-item"
+                        data-status="out-for-delivery"
+                    >
+
+                        <div class="timeline-icon">
+                            ○
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Out for Delivery
+                            </h3>
+
+                            <p>
+                                Your parcel is ready
+                                for final delivery.
+                            </p>
+
+                            <span class="timeline-date">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="timeline-item"
+                        data-status="delivered"
+                    >
+
+                        <div class="timeline-icon">
+                            ○
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Delivered
+                            </h3>
+
+                            <p>
+                                Parcel successfully delivered.
+                            </p>
+
+                            <span class="timeline-date">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Delivery Route -->
+
+            <div class="delivery-summary-card">
+
+                <h2>
+                    Delivery Information
+                </h2>
+
+                <div class="delivery-route">
+
+                    <div class="location">
+
+                        <span class="location-label">
+                            PICKUP
+                        </span>
+
+                        <strong id="routePickup">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="route-arrow">
+                        →
+                    </div>
+
+
+                    <div class="location">
+
+                        <span class="location-label">
+                            DELIVERY
+                        </span>
+
+                        <strong id="routeDelivery">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Close Tracking Result -->
+
+            <button
+                type="button"
+                id="closeTrackingResult"
+                class="secondary-button"
+            >
+                Back to Order History
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script src="../js/track-parcel.js"></script>
+
+</body>
+</html>

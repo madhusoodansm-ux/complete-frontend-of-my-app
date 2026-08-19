@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sri Sadguru Parcel Service - Customer Notifications"
+    >
+
+    <title>Notifications | Sri Sadguru Parcel Service</title>
+
+    <!-- Main Website CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- Notifications Page CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/notifications.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="notifications-header">
+
+        <div class="header-left">
+
+            <button
+                type="button"
+                class="back-button"
+                id="backButton"
+                aria-label="Go back"
+            >
+                &#8592;
+            </button>
+
+            <div class="header-title">
+
+                <h1>Notifications</h1>
+
+                <p>
+                    Stay updated about your parcels and payments
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="mark-all-button"
+                id="markAllReadButton"
+            >
+                Mark all as read
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="notifications-container">
+
+
+        <!-- =================================================
+             NOTIFICATION SUMMARY
+        ================================================== -->
+
+        <section
+            class="notification-summary"
+            aria-label="Notification summary"
+        >
+
+            <div class="summary-item">
+
+                <span
+                    class="summary-number"
+                    id="totalNotifications"
+                >
+                    0
+                </span>
+
+                <span class="summary-label">
+                    Total
+                </span>
+
+            </div>
+
+
+            <div class="summary-item unread-summary">
+
+                <span
+                    class="summary-number"
+                    id="unreadNotifications"
+                >
+                    0
+                </span>
+
+                <span class="summary-label">
+                    Unread
+                </span>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span
+                    class="summary-number"
+                    id="paymentNotifications"
+                >
+                    0
+                </span>
+
+                <span class="summary-label">
+                    Payments
+                </span>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span
+                    class="summary-number"
+                    id="deliveryNotifications"
+                >
+                    0
+                </span>
+
+                <span class="summary-label">
+                    Deliveries
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTER TABS
+        ================================================== -->
+
+        <section
+            class="notification-filters"
+            aria-label="Notification filters"
+        >
+
+            <button
+                type="button"
+                class="notification-filter active"
+                data-filter="all"
+            >
+                All
+            </button>
+
+
+            <button
+                type="button"
+                class="notification-filter"
+                data-filter="unread"
+            >
+                Unread
+            </button>
+
+
+            <button
+                type="button"
+                class="notification-filter"
+                data-filter="booking"
+            >
+                Booking
+            </button>
+
+
+            <button
+                type="button"
+                class="notification-filter"
+                data-filter="delivery"
+            >
+                Delivery
+            </button>
+
+
+            <button
+                type="button"
+                class="notification-filter"
+                data-filter="payment"
+            >
+                Payment
+            </button>
+
+
+            <button
+                type="button"
+                class="notification-filter"
+                data-filter="service"
+            >
+                Service
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             NOTIFICATION LIST
+        ================================================== -->
+
+        <section
+            class="notifications-list-section"
+            aria-label="Customer notifications"
+        >
+
+            <div
+                id="notificationsList"
+                class="notifications-list"
+            >
+                <!--
+                    Notifications will be generated
+                    here by notifications.js.
+                -->
+            </div>
+
+
+            <!-- Empty State -->
+
+            <div
+                id="noNotifications"
+                class="no-notifications"
+                style="display: none;"
+            >
+
+                <div class="empty-icon">
+                    &#128276;
+                </div>
+
+                <h2>
+                    No notifications
+                </h2>
+
+                <p>
+                    You are all caught up.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         NOTIFICATION DETAILS MODAL
+    ====================================================== -->
+
+    <div
+        id="notificationModal"
+        class="notification-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalNotificationTitle"
+        style="display: none;"
+    >
+
+        <div
+            class="notification-modal-overlay"
+            id="notificationModalOverlay"
+        ></div>
+
+
+        <div class="notification-modal-content">
+
+            <button
+                type="button"
+                class="modal-close-button"
+                id="closeNotificationModal"
+                aria-label="Close notification"
+            >
+                &times;
+            </button>
+
+
+            <div
+                class="modal-notification-icon"
+                id="modalNotificationIcon"
+            >
+                &#128276;
+            </div>
+
+
+            <span
+                class="modal-notification-type"
+                id="modalNotificationType"
+            >
+                Notification
+            </span>
+
+
+            <h2
+                id="modalNotificationTitle"
+            >
+                Notification
+            </h2>
+
+
+            <p
+                class="modal-notification-message"
+                id="modalNotificationMessage"
+            >
+            </p>
+
+
+            <div class="modal-notification-info">
+
+                <div class="modal-info-row">
+
+                    <span>
+                        Date
+                    </span>
+
+                    <strong
+                        id="modalNotificationDate"
+                    >
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="modal-info-row">
+
+                    <span>
+                        Tracking ID
+                    </span>
+
+                    <strong
+                        id="modalTrackingId"
+                    >
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="modal-info-row"
+                    id="modalAmountRow"
+                >
+
+                    <span>
+                        Amount
+                    </span>
+
+                    <strong
+                        id="modalAmount"
+                    >
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="modal-primary-button"
+                    id="modalActionButton"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="bottom-navigation"
+        aria-label="Customer navigation"
+    >
+
+        <!-- Home -->
+
+        <a
+            href="dashboard.html"
+            class="bottom-nav-item"
+        >
+
+            <span class="nav-icon">
+                &#127968;
+            </span>
+
+            <span class="nav-label">
+                Home
+            </span>
+
+        </a>
+
+
+        <!-- Book Parcel -->
+
+        <a
+            href="parcel.html"
+            class="bottom-nav-item"
+        >
+
+            <span class="nav-icon">
+                &#128230;
+            </span>
+
+            <span class="nav-label">
+                Book
+            </span>
+
+        </a>
+
+
+        <!-- Track Parcel -->
+
+        <a
+            href="track-parcel.html"
+            class="bottom-nav-item"
+        >
+
+            <span class="nav-icon">
+                &#128269;
+            </span>
+
+            <span class="nav-label">
+                Track
+            </span>
+
+        </a>
+
+
+        <!-- Payment -->
+
+        <a
+            href="payment.html"
+            class="bottom-nav-item"
+        >
+
+            <span class="nav-icon">
+                &#8377;
+            </span>
+
+            <span class="nav-label">
+                Payment
+            </span>
+
+        </a>
+
+
+        <!-- Profile -->
+
+        <a
+            href="profile.html"
+            class="bottom-nav-item"
+        >
+
+            <span class="nav-icon">
+                &#128100;
+            </span>
+
+            <span class="nav-label">
+                Profile
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         NOTIFICATIONS JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="../js/notifications.js"
+    ></script>
+
+</body>
+</html>

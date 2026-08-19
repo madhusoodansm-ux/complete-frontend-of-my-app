@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | Sri Sadguru Parcel Service</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+
+    <header class="profile-header">
+        <div class="header-inner">
+
+            <button
+                type="button"
+                class="back-button"
+                id="backButton"
+                aria-label="Go back">
+                &#8592;
+            </button>
+
+            <div>
+                <h1>My Profile</h1>
+                <p>Manage your account and personal information</p>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- ==================== MAIN ==================== -->
+
+    <main class="profile-container">
+
+        <!-- ==================== PROFILE SUMMARY ==================== -->
+
+        <section class="profile-card profile-summary">
+
+            <div class="profile-photo-area">
+
+                <div class="profile-avatar" id="profileAvatar">
+                    <span id="avatarInitial">S</span>
+                </div>
+
+                <button
+                    type="button"
+                    class="change-photo-button"
+                    id="changePhotoButton">
+                    Change Photo
+                </button>
+
+                <input
+                    type="file"
+                    id="profilePhotoInput"
+                    accept="image/*"
+                    hidden>
+
+            </div>
+
+            <div class="profile-basic-info">
+
+                <h2 id="customerName">Sri Customer</h2>
+
+                <p id="customerId" class="customer-id">
+                    Customer ID: SSPS-CUST-001
+                </p>
+
+                <span class="account-status">
+                    <span class="status-dot"></span>
+                    Active Account
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== PERSONAL INFORMATION ==================== -->
+
+        <section class="profile-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Personal Information</h2>
+                    <p>Your registered customer details</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="edit-button"
+                    id="editProfileButton">
+                    Edit
+                </button>
+
+            </div>
+
+
+            <div class="profile-information-grid">
+
+                <div class="profile-field">
+                    <span class="field-label">Full Name</span>
+                    <span class="field-value" id="displayName">
+                        Sri Customer
+                    </span>
+                </div>
+
+                <div class="profile-field">
+                    <span class="field-label">Mobile Number</span>
+                    <span class="field-value" id="displayMobile">
+                        +91 98765 43210
+                    </span>
+                </div>
+
+                <div class="profile-field">
+                    <span class="field-label">Email Address</span>
+                    <span class="field-value" id="displayEmail">
+                        customer@gmail.com
+                    </span>
+                </div>
+
+                <div class="profile-field">
+                    <span class="field-label">District</span>
+                    <span class="field-value" id="displayDistrict">
+                        —
+                    </span>
+                </div>
+
+                <div class="profile-field">
+                    <span class="field-label">State</span>
+                    <span class="field-value" id="displayState">
+                        —
+                    </span>
+                </div>
+
+                <div class="profile-field full-width">
+                    <span class="field-label">Address</span>
+                    <span class="field-value" id="displayAddress">
+                        —
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- EDIT PROFILE -->
+
+            <div
+                class="edit-profile-area"
+                id="editProfileSection"
+                hidden>
+
+                <div class="sub-section-title">
+                    <h3>Edit Profile</h3>
+                    <p>Update your personal information</p>
+                </div>
+
+                <form id="editProfileForm" novalidate>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="editName">Full Name</label>
+                            <input
+                                type="text"
+                                id="editName"
+                                placeholder="Enter full name">
+                            <small id="nameError" class="form-error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editMobile">Mobile Number</label>
+                            <input
+                                type="tel"
+                                id="editMobile"
+                                maxlength="10"
+                                inputmode="numeric"
+                                placeholder="Enter mobile number">
+                            <small id="mobileError" class="form-error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editEmail">Email Address</label>
+                            <input
+                                type="email"
+                                id="editEmail"
+                                placeholder="Enter Gmail address">
+                            <small id="emailError" class="form-error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editDistrict">District</label>
+                            <input
+                                type="text"
+                                id="editDistrict"
+                                placeholder="Enter district">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editState">State</label>
+                            <input
+                                type="text"
+                                id="editState"
+                                placeholder="Enter state">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="editAddress">Address</label>
+                            <textarea
+                                id="editAddress"
+                                rows="3"
+                                placeholder="Enter complete address"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="cancelEditButton">
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-button">
+                            Save Changes
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="success-message"
+                        id="profileSuccessMessage"
+                        hidden>
+                        Profile updated successfully.
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SAVED ADDRESSES ==================== -->
+
+        <section class="profile-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Saved Addresses</h2>
+                    <p>Manage your frequently used addresses</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="edit-button"
+                    id="addAddressButton">
+                    + Add
+                </button>
+
+            </div>
+
+
+            <div
+                class="saved-address-list"
+                id="savedAddressList">
+            </div>
+
+
+            <!-- ADD / EDIT ADDRESS FORM -->
+
+            <div
+                class="address-form-area"
+                id="addressFormArea"
+                hidden>
+
+                <div class="sub-section-title">
+                    <h3 id="addressFormTitle">Add New Address</h3>
+                    <p>Enter the address details</p>
+                </div>
+
+                <form id="addressForm" novalidate>
+
+                    <input
+                        type="hidden"
+                        id="addressEditIndex"
+                        value="-1">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="addressType">
+                                Address Type
+                            </label>
+
+                            <select id="addressType">
+                                <option value="Home">Home</option>
+                                <option value="Office">Office</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addressContactName">
+                                Contact Person Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="addressContactName"
+                                placeholder="Enter contact name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addressMobile">
+                                Mobile Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="addressMobile"
+                                maxlength="10"
+                                inputmode="numeric"
+                                placeholder="Enter mobile number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addressPin">
+                                PIN Code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="addressPin"
+                                maxlength="6"
+                                inputmode="numeric"
+                                placeholder="Enter PIN code">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addressDistrict">
+                                District
+                            </label>
+
+                            <input
+                                type="text"
+                                id="addressDistrict"
+                                placeholder="Enter district">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addressState">
+                                State
+                            </label>
+
+                            <input
+                                type="text"
+                                id="addressState"
+                                placeholder="Enter state">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="addressFull">
+                                Full Address
+                            </label>
+
+                            <textarea
+                                id="addressFull"
+                                rows="3"
+                                placeholder="House / Door No., Street, Area, Landmark"></textarea>
+                        </div>
+
+                    </div>
+
+                    <label class="default-address-option">
+
+                        <input
+                            type="checkbox"
+                            id="addressDefault">
+
+                        <span>
+                            Set as default address
+                        </span>
+
+                    </label>
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="cancelAddressButton">
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-button">
+                            Save Address
+                        </button>
+
+                    </div>
+
+                    <small
+                        class="form-error"
+                        id="addressError">
+                    </small>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== ACCOUNT ==================== -->
+
+        <section class="profile-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Account</h2>
+                    <p>Manage your account settings</p>
+                </div>
+
+            </div>
+
+
+            <div class="profile-options">
+
+                <button
+                    type="button"
+                    class="profile-option"
+                    id="changePasswordButton">
+
+                    <span class="option-icon">&#128274;</span>
+
+                    <span class="option-content">
+                        <strong>Change Password</strong>
+                        <small>
+                            Update your account password
+                        </small>
+                    </span>
+
+                    <span class="option-arrow">&#8250;</span>
+
+                </button>
+
+
+                <a
+                    href="payment.html"
+                    class="profile-option">
+
+                    <span class="option-icon">&#8377;</span>
+
+                    <span class="option-content">
+                        <strong>Payment History</strong>
+                        <small>
+                            View payments and receipts
+                        </small>
+                    </span>
+
+                    <span class="option-arrow">&#8250;</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SUPPORT ==================== -->
+
+        <section class="profile-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Help & Support</h2>
+                    <p>Need help with your parcel service?</p>
+                </div>
+
+            </div>
+
+
+            <div class="profile-options">
+
+                <button
+                    type="button"
+                    class="profile-option"
+                    id="supportButton">
+
+                    <span class="option-icon">&#128222;</span>
+
+                    <span class="option-content">
+                        <strong>Customer Support</strong>
+                        <small>
+                            Get help with booking or delivery
+                        </small>
+                    </span>
+
+                    <span class="option-arrow">&#8250;</span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="profile-option"
+                    id="aboutUsButton">
+
+                    <span class="option-icon">&#8505;</span>
+
+                    <span class="option-content">
+                        <strong>About Us</strong>
+                        <small>
+                            Learn about Sri Sadguru Parcel Service
+                        </small>
+                    </span>
+
+                    <span class="option-arrow">&#8250;</span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== LOGOUT ==================== -->
+
+        <div class="logout-section">
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton">
+
+                &#128682; Logout
+
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ====================================================
+         CHANGE PASSWORD MODAL
+    ===================================================== -->
+
+    <div
+        class="profile-modal"
+        id="passwordModal"
+        hidden>
+
+        <div
+            class="profile-modal-overlay"
+            id="passwordModalOverlay">
+        </div>
+
+        <div class="profile-modal-content">
+
+            <button
+                type="button"
+                class="modal-close-button"
+                id="closePasswordModal">
+                &times;
+            </button>
+
+            <h2>Change Password</h2>
+
+            <p class="modal-description">
+                Create a strong new password for your account.
+            </p>
+
+
+            <form id="changePasswordForm" novalidate>
+
+                <div class="form-group">
+
+                    <label for="currentPassword">
+                        Current Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="currentPassword"
+                            placeholder="Enter current password">
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="currentPassword">
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="newPassword">
+                        New Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="Enter new password">
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="newPassword">
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 12+4 PASSWORD RULES -->
+
+                <div class="password-rules">
+
+                    <strong>Password requirements</strong>
+
+                    <ul>
+
+                        <li id="ruleLength">
+                            At least 12 characters
+                        </li>
+
+                        <li id="ruleUppercase">
+                            At least one uppercase letter (A-Z)
+                        </li>
+
+                        <li id="ruleNumber">
+                            At least one number (0-9)
+                        </li>
+
+                        <li id="ruleSpecial">
+                            At least one special character
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm New Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm new password">
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="confirmPassword">
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <small
+                    class="form-error"
+                    id="passwordError">
+                </small>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelPasswordButton">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button">
+                        Update Password
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- ====================================================
+         CUSTOMER SUPPORT MODAL
+    ===================================================== -->
+
+    <div
+        class="profile-modal"
+        id="supportModal"
+        hidden>
+
+        <div
+            class="profile-modal-overlay"
+            id="supportModalOverlay">
+        </div>
+
+        <div class="profile-modal-content">
+
+            <button
+                type="button"
+                class="modal-close-button"
+                id="closeSupportModal">
+                &times;
+            </button>
+
+            <h2>Customer Support</h2>
+
+            <p class="modal-description">
+                We are here to help you with your parcel service.
+            </p>
+
+            <div class="support-list">
+
+                <div class="support-item">
+                    <span class="support-icon">&#128222;</span>
+
+                    <div>
+                        <strong>Phone Support</strong>
+                        <p>Contact our customer support team.</p>
+                    </div>
+                </div>
+
+                <div class="support-item">
+                    <span class="support-icon">&#9993;</span>
+
+                    <div>
+                        <strong>Email Support</strong>
+                        <p>Send your questions or concerns.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ====================================================
+         ABOUT US MODAL
+    ===================================================== -->
+
+    <div
+        class="profile-modal"
+        id="aboutUsModal"
+        hidden>
+
+        <div
+            class="profile-modal-overlay"
+            id="aboutUsModalOverlay">
+        </div>
+
+        <div class="profile-modal-content about-modal">
+
+            <button
+                type="button"
+                class="modal-close-button"
+                id="closeAboutUsModal">
+                &times;
+            </button>
+
+            <div class="about-logo">
+                <img
+                    src="../images/logo.png"
+                    alt="Sri Sadguru Parcel Service">
+            </div>
+
+            <h2>Sri Sadguru Parcel Service</h2>
+
+            <p class="about-description">
+                Reliable parcel booking and delivery services
+                designed to make sending and tracking parcels
+                simple, clear, and convenient.
+            </p>
+
+            <div class="company-details">
+
+                <p>
+                    <strong>Company:</strong>
+                    Sri Sadguru Parcel Service
+                </p>
+
+                <p>
+                    <strong>Service:</strong>
+                    Parcel Booking & Delivery
+                </p>
+
+                <p>
+                    <strong>Customer Portal:</strong>
+                    Booking, Tracking & Payment
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ====================================================
+         LOGOUT MODAL
+    ===================================================== -->
+
+    <div
+        class="profile-modal"
+        id="logoutModal"
+        hidden>
+
+        <div
+            class="profile-modal-overlay"
+            id="logoutModalOverlay">
+        </div>
+
+        <div class="profile-modal-content logout-modal">
+
+            <div class="logout-icon">
+                &#128682;
+            </div>
+
+            <h2>Logout?</h2>
+
+            <p class="modal-description">
+                Are you sure you want to logout?
+            </p>
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelLogoutButton">
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="danger-button"
+                    id="confirmLogoutButton">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ==================== BOTTOM NAVIGATION ==================== -->
+
+    <nav
+        class="bottom-navigation"
+        aria-label="Customer navigation">
+
+        <a
+            href="dashboard.html"
+            class="bottom-nav-item">
+
+            <span class="nav-icon">&#127968;</span>
+            <span class="nav-label">Home</span>
+
+        </a>
+
+        <a
+            href="parcel.html"
+            class="bottom-nav-item">
+
+            <span class="nav-icon">&#128230;</span>
+            <span class="nav-label">Book</span>
+
+        </a>
+
+        <a
+            href="track-parcel.html"
+            class="bottom-nav-item">
+
+            <span class="nav-icon">&#128269;</span>
+            <span class="nav-label">Track</span>
+
+        </a>
+
+        <a
+            href="payment.html"
+            class="bottom-nav-item">
+
+            <span class="nav-icon">&#8377;</span>
+            <span class="nav-label">Payment</span>
+
+        </a>
+
+        <a
+            href="profile.html"
+            class="bottom-nav-item active">
+
+            <span class="nav-icon">&#128100;</span>
+            <span class="nav-label">Profile</span>
+
+        </a>
+
+    </nav>
+
+
+    <script src="../js/profile.js"></script>
+
+</body>
+</html>
+
